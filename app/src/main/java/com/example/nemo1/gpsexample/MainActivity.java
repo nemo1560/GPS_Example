@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private Location mLastLocation;
     private LocationRequest locationRequest;
     private boolean isAutoUpdateLocation;
+    private com.example.nemo1.gpsexample.Location locationInterface;
     @BindView(R.id.out_location)TextView out_location;
     @BindView(R.id.get_location)Button get_location;
     @BindView(R.id.switch_auto)Switch switch_auto;
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private void updateUi() {
         if (mLastLocation != null) {
             out_location.setText(String.format(Locale.getDefault(), "%f, %f", mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+            locationInterface.onGetLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude());
         }
     }
 
